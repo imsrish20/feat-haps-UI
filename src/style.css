@@ -1,0 +1,36 @@
+.sliderButtonNext {
+    width: 30px;
+    height: 40px; 
+    border: none;
+    border-radius: 20px; 
+    background-color: #eeeded;
+    position: absolute;
+    top: 45%;
+    left: 64%;
+    cursor: pointer;
+  }
+
+  .sliderButtonPrev{
+    width: 30px;
+    height: 40px; 
+    border: none;
+    border-radius: 20px; 
+    background-color: #eeeded;
+    position: absolute;
+    top: 45%;
+    left: 34%;
+    cursor: pointer;
+  }
+
+button:hover {
+    background-color: #eb983e;
+}
+
+.slideShowImg {
+    position: absolute;
+    top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    height: 500px;
+    width: 370px;
+}
