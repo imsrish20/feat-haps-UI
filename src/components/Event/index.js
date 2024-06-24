@@ -111,7 +111,7 @@ function App() {
           Home
         </Button>
       </Link>
-      <Link to="/event/createNewEvent" style={{ textDecoration: 'none' }}>
+      <Link to="/event/CreateNewEvent" style={{ textDecoration: 'none' }}>
         <Button
           variant="contained"
           sx={{

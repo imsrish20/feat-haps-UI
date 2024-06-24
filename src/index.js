@@ -6,6 +6,7 @@ import Event from "./components/Event";
 import NotFound from "./components/NotFound";
 import LandingPage from "./components/LandingPage";
 import DashboardNewPage from "./components/NewDashboard";
+import CreateNewEvent from "./components/CreateNewEvent";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ root.render(
       <Route path='/events' element={<Event />} />
       {/* <Route path= '/dashboard' element={<DashboardPage/>} /> */}
       <Route path= '/newdashboard' element={<DashboardNewPage/>} />
+      <Route path='/event/createNewEvent' element={<CreateNewEvent/>}/>
 
 
       <Route path="*" element={<NotFound />} />
