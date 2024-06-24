@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Form() {
+function createNewEvent() {
   const [data, setData] = useState({
     name: "",
     fee: 0,
@@ -173,4 +173,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default createNewEvent;

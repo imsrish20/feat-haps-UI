@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './style.css';
 import LandingPage from './components/LandingPage';
-import DashboardPage from './components/Authenticated/Dashboard';
+import DashboardNewPage from './components/NewDashboard';
 
 function App() {
   return (
@@ -14,14 +14,14 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+            <Link to="/event">hsdjh</Link>
             </li>
           </ul>
         </nav>
 
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/newdashboard" element={<DashboardNewPage />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>
