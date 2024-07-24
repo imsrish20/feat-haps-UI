@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import PhotoGallery from "./gallery"
+import PhotoGallery from "./gallery";
 import {
   Typography,
   CssBaseline,
@@ -10,9 +10,11 @@ import {
   Toolbar,
   useScrollTrigger,
   Slide,
+  Box,
 } from "@mui/material";
-import Masonry from '@mui/lab/Masonry';
 import { URL } from "../Constants";
+import EventCard from "./eventcard";
+
 function HideOnScroll(props) {
   const { children, window } = props;
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
@@ -76,23 +78,21 @@ const EventDetails = () => {
   if (!event) {
     return <div>Event not found</div>;
   }
+
   return (
     <React.Fragment>
       <CssBaseline />
       <HideAppBar>{event.name}</HideAppBar>
-      <div style={{ padding: 16, marginTop: 64 }}>
-        <Typography variant="body1">
-          
-        </Typography>
-      </div>
-      <PhotoGallery></PhotoGallery>
-
-      <div style={{ display: 'flex', marginLeft: '30px' }}>
-
-      </div>
-
-
-
+      <Box sx={{ padding: 2 }}>
+        <Typography variant="body1">{/* Add any additional event details here */}</Typography>
+      </Box>
+      <Box sx={{ marginTop: 3}}>
+        <PhotoGallery />
+      </Box>
+      <Box sx={{ marginTop: -25 ,marginLeft: 10}}>
+        <EventCard event={event} />
+      </Box>
+      
 
     </React.Fragment>
   );

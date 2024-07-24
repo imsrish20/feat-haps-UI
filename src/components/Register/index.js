@@ -93,18 +93,12 @@ const CreateNewUser = () => {
               />
             </FormControl>
             <FormControl style={{ flex: 1 }}>
-              <TextField
-                fullWidth
-                label="Event Name"
-                name="eventName"
-                value={data.eventName}
-                onChange={handleChange}
-                variant="outlined"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style={{ maxWidth: 300, marginTop: 0 }}
-              />
+            <TextField
+          disabled
+          id="outlined-disabled"
+          label="Event Name"
+          defaultValue={data.eventName}
+        />
             </FormControl>
           </div>
 
