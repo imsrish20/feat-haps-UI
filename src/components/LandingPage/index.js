@@ -15,7 +15,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
-import LoginModal from '../LoginModal'; // Import LoginModal component
+import LoginModal from '../LoginModal'; 
 import SignupModal from '../SignupModal';
 import EventCard from '../EventCard';
 import PhotoGallery from '../PhotoGallery/PhotoGallery';
