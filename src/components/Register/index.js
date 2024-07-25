@@ -1,4 +1,6 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -19,9 +21,10 @@ import FemaleIcon from "@mui/icons-material/Female";
 import TransgenderIcon from "@mui/icons-material/Transgender";
 import FormControl from "@mui/material/FormControl";
 import RadioGroup from "@mui/joy/RadioGroup";
-import Radio, { radioClasses } from "@mui/joy/Radio";
+import Radio from "@mui/joy/Radio";
 import Sheet from "@mui/joy/Sheet";
 import FormLabel from "@mui/joy/FormLabel";
+import { URL } from "../Constants";
 
 dayjs.extend(advancedFormat);
 
@@ -37,19 +40,72 @@ const MenuProps = {
 };
 
 const CreateNewUser = () => {
-  const theme = useTheme();
-  const [data, setData] = React.useState({
+  const [data, setData] = useState({
     userName: "",
     eventName: "",
     branch: "",
     year: [],
     emailId: "",
     phoneNo: "",
+    gender: "",
   });
+  const [errors, setErrors] = useState({
+    emailId: "",
+    phoneNo: "",
+  });
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`${URL}/events`)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Events data:", response.data.events);
+          setEvents(response.data.events);
+        } else {
+          console.error("Something went wrong!");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const event = events.find((event) => event._id === id);
+  console.log("Matched event:", event);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!event) {
+    return <div>Event not found {id}</div>;
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setData({ ...data, [name]: Array.isArray(value) ? value : [value] });
+
+    // Validation logic for email and phone number
+    if (name === "emailId") {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setErrors({
+        ...errors,
+        emailId: emailPattern.test(value) ? "" : "Invalid email address",
+      });
+    }
+
+    if (name === "phoneNo") {
+      const phonePattern = /^\d{10}$/; // Assumes a 10-digit phone number
+      setErrors({
+        ...errors,
+        phoneNo: phonePattern.test(value) ? "" : "Invalid phone number",
+      });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -63,7 +119,7 @@ const CreateNewUser = () => {
       <CssBaseline />
       <HideAppBar>
         <Typography variant="h6" component="div">
-          Register for your event
+          Register for {event.name}
         </Typography>
       </HideAppBar>
 
@@ -93,12 +149,12 @@ const CreateNewUser = () => {
               />
             </FormControl>
             <FormControl style={{ flex: 1 }}>
-            <TextField
-          disabled
-          id="outlined-disabled"
-          label="Event Name"
-          defaultValue={data.eventName}
-        />
+              <TextField
+                disabled
+                id="outlined-disabled"
+                label={event.name}
+                defaultValue={event.name}
+              />
             </FormControl>
           </div>
 
@@ -135,7 +191,9 @@ const CreateNewUser = () => {
                 <MenuItem value="Mechanical Engineering">
                   Mechanical Engineering
                 </MenuItem>
-                <MenuItem value="Civil Engineering">Civil Engineering</MenuItem>
+                <MenuItem value="Civil Engineering">
+                  Civil Engineering
+                </MenuItem>
                 {/* Add more options as needed */}
               </Select>
             </FormControl>
@@ -147,20 +205,24 @@ const CreateNewUser = () => {
               <TextField
                 fullWidth
                 label="Email ID"
-                name="email"
-                value={data.email}
+                name="emailId"
+                value={data.emailId}
                 onChange={handleChange}
                 variant="outlined"
+                error={!!errors.emailId}
+                helperText={errors.emailId}
               />
             </FormControl>
             <FormControl style={{ flex: 1 }}>
               <TextField
                 fullWidth
                 label="Phone Number"
-                name="phone"
-                value={data.phone}
+                name="phoneNo"
+                value={data.phoneNo}
                 onChange={handleChange}
                 variant="outlined"
+                error={!!errors.phoneNo}
+                helperText={errors.phoneNo}
               />
             </FormControl>
           </div>
@@ -249,13 +311,11 @@ const CreateNewUser = () => {
               >
                 QR Code Preview (200x200)
               </span>
-              
             </div>
-            
           </div>
-          <div style={{marginTop: "-20px",marginLeft: "985px"}}>
-          <Typography>Pay Here</Typography>
-            </div>
+          <div style={{ marginTop: "-20px", marginLeft: "985px" }}>
+            <Typography>Pay Here</Typography>
+          </div>
           {/* Submit Button */}
           <div
             style={{

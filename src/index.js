@@ -18,7 +18,7 @@ root.render(
       {/* <Route path= '/dashboard' element={<DashboardPage/>} /> */}
       <Route path= '/newdashboard' element={<DashboardNewPage/>} />
       <Route path='/event/createNewEvent' element={<CreateNewEvent/>}/>
-      <Route path='/event/register' element={<Register/>}/>
+      <Route path='/event/register/:id' element={<Register/>}/>
       <Route path="/event/:id" element={<EventDetails />} />
 
 
