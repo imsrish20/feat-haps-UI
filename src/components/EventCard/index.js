@@ -138,7 +138,7 @@ export default function EventCard({ event }) {
             <ShareIcon />
           </IconButton>
           <IconButton aria-label="add to favorites" sx={{ marginLeft: "auto" }}>
-            <Link to={`/event/register`} style={{ textDecoration: 'none' }}>
+            <Link to={`/event/register/${event._id}`} style={{ textDecoration: 'none' }}>
               <Button>Register</Button>
             </Link>
           </IconButton>

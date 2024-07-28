@@ -29,7 +29,7 @@ export default function EventCard({ event }) {
         sx={{
           width: "100%",
           maxWidth: "1000px",
-          padding: "16px",
+          padding: "5px",
           borderRadius: "8px", // Rounded corners for a more card-like appearance
         }}
       >
@@ -48,7 +48,7 @@ export default function EventCard({ event }) {
             
           />
           <CardContent sx={{ flex: "1 0 auto" }}>
-            <Stack direction="row" spacing={3}>
+            <Stack direction="row" spacing={8}>
               <Typography>
                 Join us on:{" "}
                 {new Date(event.startDate).toLocaleDateString("en-US", {
@@ -83,7 +83,7 @@ export default function EventCard({ event }) {
               </Typography>
             </Stack>
 
-            <Stack direction="row" spacing={8} sx={{ marginTop: "15px" }}>
+            <Stack direction="row" spacing={6} sx={{ marginTop: "15px" }}>
               <Typography
                 sx={{
                   fontSize: "16px",
@@ -126,23 +126,23 @@ export default function EventCard({ event }) {
                   sx={{
                     fontWeight: "bold",
                     fontSize: "20px",
-                    marginLeft: "160px",
+                    marginLeft: "200px",
                   }}
                 >
                   ₹{event.fee}
                 </Typography>
                 <Link
-                  to="/event/register"
-                  style={{ textDecoration: "none", marginLeft: "16px" }}
-                >
-                  <Button
-                    variant="contained"
-                    size="small"
-                    style={{ backgroundColor: "orange", color: "white", size:"large" }}
-                  >
-                    Book
-                  </Button>
-                </Link>
+      to={`/event/register/${event._id}`}
+      style={{ textDecoration: "none", marginLeft: "16px" }}
+    >
+      <Button
+        variant="contained"
+        size="small"
+        style={{ backgroundColor: "orange", color: "white" }}
+      >
+        Book
+      </Button>
+    </Link>
               </Box>
             </Stack>
           </CardContent>

@@ -89,7 +89,7 @@ const EventDetails = () => {
       <Box sx={{ marginTop: 3}}>
         <PhotoGallery />
       </Box>
-      <Box sx={{ marginTop: -25 ,marginLeft: 10}}>
+      <Box sx={{ marginTop: -20 ,marginLeft: 10}}>
         <EventCard event={event} />
       </Box>
       
