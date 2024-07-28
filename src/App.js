@@ -1,30 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './style.css';
-import LandingPage from './components/LandingPage';
-import DashboardNewPage from './components/NewDashboard';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
+import NotFound from "./components/NotFound";
+import Event from "./components/Event";
+import EventDetails from "./components/Event/eventID"
+import Register from "./components/Register";
+import CreateNewEvent from "./components/CreateNewEvent";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-            <Link to="/event">hsdjh</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/newdashboard" element={<DashboardNewPage />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/events" element={<Event />} />
+        <Route path="/event/:id" element={<EventDetails />} />
+        <Route path='/event/register/:id' element={<Register />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/event/CreateNewEvent" element={<ProtectedRoute ><CreateNewEvent /></ ProtectedRoute>} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Router>
   );
 }

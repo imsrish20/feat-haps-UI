@@ -1,4 +1,3 @@
-// LandingPage.jsx
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';

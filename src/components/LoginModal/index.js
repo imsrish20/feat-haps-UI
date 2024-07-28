@@ -20,7 +20,7 @@ const style = {
   width: 350,
 };
 
-export default function LoginModal() {
+export default function LoginModal({handleGoogleLogin}) {
   const [openLogin, setOpenLogin] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -29,7 +29,7 @@ export default function LoginModal() {
   const handleOpenLogin = () => {
     setOpenLogin(true);
   };
-  
+
   const handleCloseLogin = () => {
     setOpenLogin(false);
   };
@@ -57,10 +57,6 @@ export default function LoginModal() {
       .catch((error) => {
         console.error("Error logging in:", error);
       });
-  };
-
-  const handleGoogleLogin = () => {
-    window.location.href = `${URL}/auth/google`; // Redirect to backend for Google authentication
   };
 
   return (
