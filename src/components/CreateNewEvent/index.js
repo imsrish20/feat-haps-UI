@@ -23,17 +23,6 @@ import advancedFormat from "dayjs/plugin/advancedFormat"; // Import the plugin
 import { Button } from "@mui/material";
 dayjs.extend(advancedFormat); // Extend dayjs with advancedFormat plugin
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
 const venueNames = [
   "Main Auditorium",
   "Football Ground",

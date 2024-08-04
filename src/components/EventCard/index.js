@@ -18,6 +18,10 @@ import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function EventCard({ event }) {
+  let poster= pic1;
+  if(event.img_urls.length>0){
+    poster=event.img_urls[0];
+  }
   return (
     <Link to={`/event/${event._id}`} style={{ textDecoration: 'none' }}>
       <Card sx={{ maxWidth: 380, marginTop: 10, boxShadow: 4 }}>
@@ -37,7 +41,7 @@ export default function EventCard({ event }) {
         <CardMedia
           component="img"
           height="150"
-          image={pic1}
+          image={poster}
           style={{ height: "350px", width: "300px" }}
         />
         <CardContent>

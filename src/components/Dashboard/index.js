@@ -1,4 +1,3 @@
-// LandingPage.jsx
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
@@ -25,7 +24,7 @@ function LandingPage() {
     <div>
       <Navbar />
       <PhotoGallery />
-      <Grid container>
+      <Grid container >
         {events.map((event, index) => ( // Added index to avoid warning
           <Grid key={index} xs={4} item> {/* Added item to fix Grid layout */}
             <center>

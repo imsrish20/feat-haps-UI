@@ -12,7 +12,6 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Container from "@mui/material/Container";
 import Slide from "@mui/material/Slide";
 import { TextField, Button } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import qrCodeImage from "../../OQ-Code-Payments.png";
@@ -27,17 +26,6 @@ import FormLabel from "@mui/joy/FormLabel";
 import { URL } from "../Constants";
 
 dayjs.extend(advancedFormat);
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 
 const CreateNewUser = () => {
   const [data, setData] = useState({

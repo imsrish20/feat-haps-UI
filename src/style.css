@@ -5,8 +5,8 @@
     border-radius: 20px; 
     background-color: #eeeded;
     position: absolute;
-    top: 45%;
-    left: 64%;
+    top: 55%;
+    left: 65%;
     cursor: pointer;
   }
 
@@ -17,8 +17,8 @@
     border-radius: 20px; 
     background-color: #eeeded;
     position: absolute;
-    top: 45%;
-    left: 34%;
+    top: 55%;
+    left: 33%;
     cursor: pointer;
   }
 
@@ -27,10 +27,12 @@ button:hover {
 }
 
 .slideShowImg {
-    position: absolute;
-    top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-    height: 500px;
-    width: 370px;
+  position: relative;
+  height: 600px;
+  width: 400px;
+
+   /* Center the element horizontally */
+  padding-top: 7%; /* Ensure it starts from the top */
+  left: 36%;
+  transform: none; /* Remove the transform */
 }
