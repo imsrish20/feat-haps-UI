@@ -87,7 +87,7 @@ const EventDetails = () => {
         <Typography variant="body1">{/* Add any additional event details here */}</Typography>
       </Box>
       <Box sx={{ marginTop: 3}}>
-        <PhotoGallery />
+        <PhotoGallery img_urls={event.img_urls} />
       </Box>
       <Box sx={{ marginTop: -20 ,marginLeft: 10}}>
         <EventCard event={event} />

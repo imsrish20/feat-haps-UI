@@ -25,7 +25,7 @@ function LandingPage() {
     <div>
       <Navbar />
       <PhotoGallery />
-      <Grid container style={{ marginTop: 580 }}>
+      <Grid container>
         {events.map((event, index) => ( // Added index to avoid warning
           <Grid key={index} xs={4} item> {/* Added item to fix Grid layout */}
             <center>

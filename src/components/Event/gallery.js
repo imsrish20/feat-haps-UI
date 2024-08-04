@@ -8,9 +8,14 @@ import pic3 from "../PhotoGallery/pic3.jpg";
 import pic4 from "../PhotoGallery/pic4.jpg";
 import pic5 from "../PhotoGallery/pic5.png";
 
-const photos = [pic1, pic2, pic3, pic4, pic5]; // Ensure at least 5 images for layout consistency
 
-function PhotoGallery() {
+
+function PhotoGallery({img_urls}) {
+  let photos= [pic1, pic2, pic3, pic4, pic5];
+  if(img_urls.length>0){
+    photos= img_urls;
+  }
+  
   const [current, setCurrent] = useState(0);
   const totalPhotos = photos.length;
 
